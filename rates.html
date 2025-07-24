@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курсы криптовалют - Бнал</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./images/icon-192x192.png">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1a2a6c">
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./service-worker.js')
+            .then(reg => console.log('SW registered:', reg.scope))
+            .catch(err => console.log('SW error:', err));
+        });
+      }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="./images/logo.png" alt="Бнал">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="./index.html">Главная</a></li>
+                    <li><a href="./rates.html">Курсы</a></li>
+                    <li><a href="./reviews.html">Отзывы</a></li>
+                    <li><a href="./contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="rates">
+        <div class="container">
+            <h1>Текущие курсы обмена</h1>
+            <p class="update-time">Обновлено: <span id="current-time">10:45, 25 октября 2023</span></p>
+            
+            <div class="currency-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Криптовалюта</th>
+                            <th>Купить (RUB)</th>
+                            <th>Продать (RUB)</th>
+                            <th>Изменение</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img src="./images/btc.png" alt="Bitcoin">
+                                Bitcoin (BTC)
+                            </td>
+                            <td>3,245,000 ₽</td>
+                            <td>3,230,000 ₽</td>
+                            <td class="positive">+1.2%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="./images/eth.png" alt="Ethereum">
+                                Ethereum (ETH)
+                            </td>
+                            <td>185,500 ₽</td>
+                            <td>184,200 ₽</td>
+                            <td class="positive">+0.8%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="./images/usdt.png" alt="USDT">
+                                Tether (USDT)
+                            </td>
+                            <td>95.8 ₽</td>
+                            <td>94.5 ₽</td>
+                            <td class="negative">-0.3%</td>
+                        </tr>
+                        <tr>
+                            <td>Litecoin (LTC)</td>
+                            <td>6,850 ₽</td>
+                            <td>6,780 ₽</td>
+                            <td class="positive">+0.5%</td>
+                        </tr>
+                        <tr>
+                            <td>Ripple (XRP)</td>
+                            <td>42.3 ₽</td>
+                            <td>41.8 ₽</td>
+                            <td class="negative">-1.1%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="disclaimer">
+                <p>* Курсы обновляются в режиме реального времени. Для точного расчета вашей операции воспользуйтесь нашим калькулятором или свяжитесь с оператором.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 ООО "Бнал". Все права защищены.</p>
+            <p>Лицензия ЦБ РФ №XXXXXXX</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            const options = { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            };
+            document.getElementById('current-time').textContent = 
+                now.toLocaleTimeString('ru-RU', options).replace(',', '');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Бнал</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./images/icon-192x192.png">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1a2a6c">
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #333;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        #formMessage {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+    </style>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./service-worker.js')
+            .then(reg => console.log('SW registered:', reg.scope))
+            .catch(err => console.log('SW error:', err));
+        });
+      }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="./images/logo.png" alt="Бнал">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="./index.html">Главная</a></li>
+                    <li><a href="./rates.html">Курсы</a></li>
+                    <li><a href="./reviews.html">Отзывы</a></li>
+                    <li><a href="./contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="contacts">
+        <div class="container">
+            <h1>Наши контакты</h1>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Адрес</h3>
+                    <p>г. Москва, ул. Тверская, д. 12, офис 305</p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3>Телефон</h3>
+                    <p>+7 (495) 123-45-67</p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p>info@bnal.ru</p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3>Режим работы</h3>
+                    <p>Пн-Пт: 9:00 - 20:00<br>Сб-Вс: 10:00 - 18:00</p>
+                </div>
+            </div>
+            
+            <div class="map">
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aad3b0c8d5a6f8a7d8a7c6c0c0a7d8a7d8&amp;source=constructor" 
+                        width="100%" height="400" frameborder="0"></iframe>
+            </div>
+
+            <div class="container" style="text-align: center; margin-top: 30px;">
+                <button id="feedbackBtn" class="btn">Оставить заявку</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 ООО "Бнал". Все права защищены.</p>
+            <p>Лицензия ЦБ РФ №XXXXXXX</p>
+        </div>
+    </footer>
+
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Обратная связь</h2>
+            <form id="feedbackForm" action="./submit_feedback.php" method="POST">
+                <div class="form-group">
+                    <label for="name">ФИО:</label>
+                    <input type="text" id="name" name="name" required placeholder="Иванов Иван Иванович">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 123-45-67">
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение (необязательно):</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Ваш вопрос или комментарий"></textarea>
+                </div>
+                <button type="submit" class="btn">Отправить</button>
+            </form>
+            <div id="formMessage"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('feedbackModal');
+            const btn = document.getElementById('feedbackBtn');
+            const span = document.getElementsByClassName('close')[0];
+            const form = document.getElementById('feedbackForm');
+            const messageDiv = document.getElementById('formMessage');
+
+            btn.onclick = function() {
+                modal.style.display = 'block';
+            }
+
+            span.onclick = function() {
+                modal.style.display = 'none';
+                messageDiv.style.display = 'none';
+                messageDiv.textContent = '';
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                    messageDiv.style.display = 'none';
+                    messageDiv.textContent = '';
+                }
+            }
+
+            form.onsubmit = async function(e) {
+                e.preventDefault();
+                showMessage('Отправка данных...', 'info');
+                
+                const formData = new FormData(form);
+                
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        showMessage('Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.', 'success');
+                        form.reset();
+                        setTimeout(() => {
+                            modal.style.display = 'none';
+                            messageDiv.style.display = 'none';
+                            messageDiv.textContent = '';
+                        }, 3000);
+                    } else {
+                        showMessage('Ошибка: ' + result.message, 'error');
+                    }
+                } catch (error) {
+                    console.error('Fetch error:', error);
+                    if (error.name === 'TypeError') {
+                        showMessage('Ошибка подключения к серверу. Проверьте интернет-соединение.', 'error');
+                    } else {
+                        showMessage('Произошла ошибка: ' + error.message, 'error');
+                    }
+                }
+            }
+
+            function showMessage(text, type) {
+                messageDiv.textContent = text;
+                messageDiv.style.display = 'block';
+                
+                const styles = {
+                    'success': ['#d4edda', '#155724', '#28a745'],
+                    'error': ['#f8d7da', '#721c24', '#dc3545'],
+                    'info': ['#cce5ff', '#004085', '#007bff']
+                };
+                
+                messageDiv.style.backgroundColor = styles[type][0];
+                messageDiv.style.color = styles[type][1];
+                messageDiv.style.borderLeft = `4px solid ${styles[type][2]}`;
+            }
+        });
+    </script>
+</body>
+</html>

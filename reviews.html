@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы клиентов - ООО Бнал</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./images/icon-192x192.png">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1a2a6c">
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./service-worker.js')
+            .then(reg => console.log('SW registered:', reg.scope))
+            .catch(err => console.log('SW error:', err));
+        });
+      }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="./images/logo.png" alt="Бнал">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="./index.html">Главная</a></li>
+                    <li><a href="./rates.html">Курсы</a></li>
+                    <li><a href="./reviews.html">Отзывы</a></li>
+                    <li><a href="./contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="reviews">
+        <div class="container">
+            <h1>Отзывы наших клиентов</h1>
+            
+            <div class="review-list">
+                <div class="review">
+                    <div class="client-info">
+                        <img src="./images/review1.jpg" alt="Иван Петров">
+                        <div>
+                            <h3>Иван Петров</h3>
+                            <p class="date">15 октября 2023</p>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>Пользуюсь услугами ООО "Бнал" уже больше года. Всегда быстрый обмен, приятные операторы, лучшие курсы в Москве. Особенно радует, что можно обменять крупные суммы без лишних вопросов. Рекомендую!</p>
+                    </div>
+                </div>
+                
+                <div class="review">
+                    <div class="client-info">
+                        <div class="avatar-placeholder"></div>
+                        <div>
+                            <h3>Мария Смирнова</h3>
+                            <p class="date">10 октября 2023</p>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>Обменяла Bitcoin на рубли. Всё заняло меньше 10 минут! Очень профессиональная работа, все объяснили, помогли с оформлением. Курс был выгоднее, чем в других обменниках. Буду обращаться только сюда.</p>
+                    </div>
+                </div>
+                
+                <div class="review">
+                    <div class="client-info">
+                        <div class="avatar-placeholder"></div>
+                        <div>
+                            <h3>Алексей Козлов</h3>
+                            <p class="date">5 октября 2023</p>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>Сотрудничаю с ООО "Бнал" с момента их открытия. Ни разу не было задержек или проблем. Обмениваю крупные суммы Ethereum, всегда получаю деньги вовремя. Профессиональная команда, знающая свое дело.</p>
+                    </div>
+                </div>
+                
+                <div class="review">
+                    <div class="client-info">
+                        <div class="avatar-placeholder"></div>
+                        <div>
+                            <h3>Екатерина Васнецова</h3>
+                            <p class="date">28 сентября 2023</p>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>Первый раз пользовалась обменом криптовалюты, немного волновалась. Но сотрудники всё подробно объяснили, помогли с оформлением. Деньги пришли мгновенно после подтверждения транзакции. Отличный сервис!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 ООО "Бнал". Все права защищены.</p>
+            <p>Лицензия ЦБ РФ №XXXXXXX</p>
+        </div>
+    </footer>
+</body>
+</html>

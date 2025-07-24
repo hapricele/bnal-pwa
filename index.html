@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бнал - Обмен криптовалюты</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./images/icon-192x192.png">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1a2a6c">
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./service-worker.js')
+            .then(reg => console.log('SW registered:', reg.scope))
+            .catch(err => console.log('SW error:', err));
+        });
+      }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="./images/logo.png" alt="Бнал">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="./index.html">Главная</a></li>
+                    <li><a href="./rates.html">Курсы</a></li>
+                    <li><a href="./reviews.html">Отзывы</a></li>
+                    <li><a href="./contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Надёжный обмен криптовалюты в рубли</h1>
+            <p>ООО "Бнал" - ваш доверенный партнёр в мире цифровых активов</p>
+            <a href="./rates.html" class="btn">Текущие курсы</a>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <h2>О нашей компании</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>Надежность</h3>
+                    <p>Все операции защищены многоуровневой системой безопасности. Лицензия ЦБ РФ №XXXXXXX</p>
+                </div>
+                <div class="feature">
+                    <h3>Скорость</h3>
+                    <p>Обмен в течение 5-15 минут. Круглосуточная поддержка клиентов</p>
+                </div>
+                <div class="feature">
+                    <h3>Выгодные условия</h3>
+                    <p>Минимальные комиссии и лучшие курсы на рынке</p>
+                </div>
+            </div>
+
+            <div class="policy">
+                <h3>Наша политика</h3>
+                <p>ООО "Бнал" придерживается строгих стандартов AML/KYC. Мы гарантируем конфиденциальность ваших данных и безопасность всех операций. Наша цель - сделать обмен криптовалюты простым, быстрым и безопасным для каждого клиента.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 ООО "Бнал". Все права защищены.</p>
+            <p>Лицензия ЦБ РФ №133722869420</p>
+        </div>
+    </footer>
+</body>
+</html>
