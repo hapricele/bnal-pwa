@@ -1,7 +1,7 @@
 /* Общие стили */
 :root {
-    --primary: #1d6c1a;
-    --secondary: #03b470;
+    --primary: #1a2a6c;
+    --secondary: #2a4d8e;
     --accent: #d4af37;
     --light: #f8f9fa;
     --dark: #212529;
@@ -46,7 +46,7 @@ header .container {
 }
 
 .logo img {
-    height: 250px;
+    height: 50px;
 }
 
 nav ul {
@@ -120,7 +120,6 @@ nav ul li a:hover {
     transition: all 0.3s;
     border: none;
     cursor: pointer;
-    font-size: 16px;
 }
 
 .btn:hover {
@@ -217,7 +216,6 @@ nav ul li a:hover {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
 }
 
 /* Курсы */
@@ -359,103 +357,6 @@ footer p {
     opacity: 0.8;
 }
 
-/* Стили для формы обратной связи */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 30px;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    position: relative;
-    animation: modalopen 0.4s;
-}
-
-@keyframes modalopen {
-    from {opacity: 0; transform: translateY(-50px);}
-    to {opacity: 1; transform: translateY(0);}
-}
-
-.close {
-    color: #aaa;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.close:hover {
-    color: var(--primary);
-}
-
-.modal h2 {
-    color: var(--primary);
-    margin-bottom: 25px;
-    text-align: center;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: var(--dark);
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    transition: all 0.3s;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: var(--secondary);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(3, 180, 112, 0.2);
-}
-
-.form-group textarea {
-    resize: vertical;
-    min-height: 100px;
-}
-
-#formMessage {
-    padding: 12px;
-    margin: 20px 0 0;
-    border-radius: 4px;
-    display: none;
-    animation: fadeIn 0.3s;
-}
-
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
 /* Адаптивность */
 @media (max-width: 768px) {
     header .container {
@@ -485,26 +386,5 @@ footer p {
     
     .hero p {
         font-size: 1rem;
-    }
-
-    .modal-content {
-        width: 95%;
-        margin: 20% auto;
-        padding: 20px;
-    }
-
-    .contact-info {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .btn {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
-
-    .modal-content {
-        margin: 25% auto;
     }
 }
